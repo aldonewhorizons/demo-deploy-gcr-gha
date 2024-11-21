@@ -29,11 +29,11 @@ jobs:
           credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
 
       - name: 'Docker Auth'
-        uses: 'docker/login-action@v2'
+        uses: docker/login-action@v3
         with:
-          username: 'oauth2accesstoken'
-          password: '${{ steps.auth.outputs.auth_token }}'
-          registry: '${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}'
+          registry: '${{ env.REGION }}-docker.pkg.dev'
+          username: oauth2accesstoken
+          password: ${{ steps.auth.outputs.access_token }}
 
       - name: 'Build and Push Container'
         run: |
