@@ -1,0 +1,17 @@
+{
+    "name": "nodejs-api",
+    "version": "1.0.0",
+    "description": "API en Node.js para gestionar usuarios con datos predeterminados",
+    "main": "server.js",
+    "scripts": {
+      "start": "node server.js"
+    },
+    "dependencies": {},
+    "devDependencies": {},
+    "engines": {
+      "node": ">=18.0.0"
+    },
+    "author": "Aldo Trucios Cornejo",
+    "license": "ISC"
+  }
+  
