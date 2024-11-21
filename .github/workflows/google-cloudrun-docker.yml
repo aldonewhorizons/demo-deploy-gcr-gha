@@ -8,7 +8,8 @@ on:
 env:
   PROJECT_ID: 'hypnotic-epoch-411523'
   REGION: 'us-central1'
-  SERVICE: 'demo-deploy-gcr-gha'
+  GAR_NAME: 'demo-deploy-gcr-gha'
+  SERVICE: 'ec-nodejs-demo'
 
 jobs:
   deploy:
@@ -34,7 +35,7 @@ jobs:
 
       - name: 'Build and Push Container'
         run: |
-          DOCKER_TAG="${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }}"
+          DOCKER_TAG="${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}${{ env.GAR_NAME }}/${{ env.SERVICE }}:${{ github.sha }}"
           docker build -t "${DOCKER_TAG}" .
           docker push "${DOCKER_TAG}"
 
@@ -43,7 +44,7 @@ jobs:
         with:
           service: '${{ env.SERVICE }}'
           region: '${{ env.REGION }}'
-          image: '${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }}'
+          image: '${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}${{ env.GAR_NAME }}/${{ env.SERVICE }}:${{ github.sha }}'
 
       - name: 'Show output'
         run: |
