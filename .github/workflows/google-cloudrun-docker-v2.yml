@@ -8,7 +8,7 @@ on:
 env:
   PROJECT_ID: 'hypnotic-epoch-411523'
   REGION: 'us-central1'
-  GAR_NAME: 'ec-demo-ga'
+  GAR_NAME: 'ec-demo-gar'
   SERVICE: 'ec-pipe-demo'
 
 jobs:
